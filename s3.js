@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import {S3Client,PutObjectCommand,ListObjectsCommand} from "@aws-sdk/client-s3"
-=======
 import {S3Client,PutObjectCommand,ListObjectsCommand,GetObjectCommand} from "@aws-sdk/client-s3"
->>>>>>> a437140 (Primer commit)
 
 import {AWS_BUCKET_NAME,AWS_BUCKET_REGION,AWS_PUBLIC_KEY,AWS_SECRET_KEY} from "./config.js"
 
@@ -34,10 +31,6 @@ export async function getFiles(){
         Bucket: AWS_BUCKET_NAME,
     })
     return await client.send(command)
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 }
 
 export async function getFile(filename){
@@ -47,8 +40,4 @@ export async function getFile(filename){
     })
 
     return await client.send(command)
-    
->>>>>>> a437140 (Primer commit)
-=======
->>>>>>> b85c1fb (Primer commit)
 }
