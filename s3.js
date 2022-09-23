@@ -35,6 +35,7 @@ export async function getFiles(){
     })
     return await client.send(command)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 }
@@ -48,4 +49,6 @@ export async function getFile(filename){
     return await client.send(command)
     
 >>>>>>> a437140 (Primer commit)
+=======
+>>>>>>> b85c1fb (Primer commit)
 }
