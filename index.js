@@ -1,6 +1,6 @@
 import express from "express";
 import fileUpload from "express-fileupload";
-import {uploadFile,getFiles,getFile} from "./s3.js"
+import {uploadFile,getFiles,getFile,downloadFile,getFileURL} from "./s3.js"
 
 const app = express()
 
@@ -14,15 +14,28 @@ app.get('/files',async(req, res)=>{
     res.json(result.Contents)
 })
 
+app.get('/filesURL/:fileName',async(req, res)=>{
+    const result = await getFileURL(req.params.fileName)
+    res.json({
+        url: result})
+})
+
 app.get('/files/:fileName',async(req, res)=>{
     const result = await getFile(req.params.fileName)
     res.json(result.$metadata)
+})
+
+app.get('/download/:fileName',async(req, res)=>{
+    await downloadFile(req.params.fileName)
+    res.json({message: "archivo Descargado"})
 })
 
 app.post('/files',async (req, res)=>{
     const result = await uploadFile(req.files.file)
     res.json({result})
 })
+
+app.use(express.static('images'))
 
 app.listen(3000)
 
